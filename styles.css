@@ -1,0 +1,295 @@
+/* Main Styles */
+body {
+    font-family: 'Comic Sans MS', cursive, sans-serif;
+    background-color: #f0f8ff;
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    text-align: center;
+}
+
+.header {
+    margin-bottom: 30px;
+}
+
+.header h1 {
+    color: #ff6b6b;
+    font-size: 4rem;
+    text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.2);
+    margin-bottom: 15px;
+    animation: rainbow 6s linear infinite;
+}
+
+.header p {
+    font-size: 2rem;
+    color: #5f27cd;
+    animation: bounce 2s ease infinite;
+}
+
+#display-area {
+    background-color: #ffffff;
+    border-radius: 30px;
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+    height: 65vh;
+    position: relative;
+    overflow: hidden;
+    margin-bottom: 20px;
+    border: 8px solid #ffde7d;
+}
+
+#key-display {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 10rem;
+    color: #6c5ce7;
+    z-index: 10;
+    text-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+}
+
+#animation-area {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 5;
+}
+
+.instructions {
+    color: #666;
+    font-size: 1.2rem;
+    background-color: #e3f2fd;
+    padding: 15px;
+    border-radius: 15px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Animation Elements */
+.animation-element {
+    position: absolute;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    user-select: none;
+    transform: scale(1.2); /* Make elements larger */
+}
+
+.animation-element:hover {
+    transform: scale(1.3);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .header h1 {
+        font-size: 3rem;
+    }
+    
+    .header p {
+        font-size: 1.5rem;
+    }
+    
+    #key-display {
+        font-size: 8rem;
+    }
+}
+
+/* Animation Classes */
+.bounce {
+    animation: bounce 0.8s ease;
+}
+
+.fade-in {
+    animation: fadeIn 0.8s ease;
+}
+
+.spin {
+    animation: spin 0.8s linear;
+}
+
+.float {
+    animation: float 4s ease-in-out infinite;
+}
+
+.pulse {
+    animation: pulse 2.5s infinite;
+}
+
+.wobble {
+    animation: wobble 1.2s ease;
+}
+
+.tada {
+    animation: tada 1.2s ease;
+}
+
+.jello {
+    animation: jello 1.2s ease;
+}
+
+.heartbeat {
+    animation: heartbeat 1.8s ease-in-out infinite;
+}
+
+/* Keyframe Animations - Slower and more exaggerated for young children */
+@keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    40% { transform: translateY(-30px); }
+    60% { transform: translateY(-15px); }
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-25px); }
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.2); }
+    100% { transform: scale(1); }
+}
+
+@keyframes wobble {
+    0%, 100% { transform: translateX(0); }
+    15% { transform: translateX(-25%) rotate(-5deg); }
+    30% { transform: translateX(20%) rotate(3deg); }
+    45% { transform: translateX(-15%) rotate(-3deg); }
+    60% { transform: translateX(10%) rotate(2deg); }
+    75% { transform: translateX(-5%) rotate(-1deg); }
+}
+
+@keyframes tada {
+    0% { transform: scale(1); }
+    10%, 20% { transform: scale(0.9) rotate(-3deg); }
+    30%, 50%, 70%, 90% { transform: scale(1.2) rotate(3deg); }
+    40%, 60%, 80% { transform: scale(1.2) rotate(-3deg); }
+    100% { transform: scale(1) rotate(0); }
+}
+
+@keyframes jello {
+    0%, 100% { transform: skewX(0deg); }
+    22.5% { transform: skewX(-12.5deg) skewY(-12.5deg); }
+    33.3% { transform: skewX(6.25deg) skewY(6.25deg); }
+    44.4% { transform: skewX(-3.125deg) skewY(-3.125deg); }
+    55.5% { transform: skewX(1.5625deg) skewY(1.5625deg); }
+    66.6% { transform: skewX(-0.78125deg) skewY(-0.78125deg); }
+    77.7% { transform: skewX(0.390625deg) skewY(0.390625deg); }
+    88.8% { transform: skewX(-0.1953125deg) skewY(-0.1953125deg); }
+}
+
+@keyframes heartbeat {
+    0% { transform: scale(1); }
+    14% { transform: scale(1.4); }
+    28% { transform: scale(1); }
+    42% { transform: scale(1.4); }
+    70% { transform: scale(1); }
+}
+
+@keyframes rainbow {
+    0% { color: #ff6b6b; }
+    14% { color: #ff9e7d; }
+    28% { color: #ffde7d; }
+    42% { color: #7bed9f; }
+    56% { color: #70a1ff; }
+    70% { color: #7158e2; }
+    84% { color: #ff9ff3; }
+    100% { color: #ff6b6b; }
+}
+
+/* Background Elements */
+.bg-element {
+    position: absolute;
+    z-index: 1;
+    opacity: 0.3; /* Increased opacity for better visibility */
+    pointer-events: none;
+    transform: scale(1.5); /* Make background elements larger */
+}
+
+/* Confetti Effect */
+.confetti {
+    position: absolute;
+    width: 15px; /* Larger confetti */
+    height: 15px;
+    background-color: #f00;
+    opacity: 0.8; /* More visible */
+    animation: confetti-fall 5s linear forwards; /* Slower fall */
+}
+
+@keyframes confetti-fall {
+    0% { transform: translateY(-100px) rotate(0deg); opacity: 1; }
+    100% { transform: translateY(1000px) rotate(720deg); opacity: 0; }
+}
+
+/* Child-friendly features */
+.help-button {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 60px;
+    height: 60px;
+    background-color: #ff9ff3;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2rem;
+    color: white;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+    z-index: 100;
+}
+
+.help-button:hover {
+    transform: scale(1.1);
+}
+
+/* Accessibility improvements */
+.high-contrast-mode {
+    background-color: #000;
+    color: #fff;
+}
+
+.high-contrast-mode #display-area {
+    background-color: #000;
+    border-color: #fff;
+}
+
+.high-contrast-mode #key-display {
+    color: #fff;
+    text-shadow: none;
+}
+
+/* Larger touch targets for mobile */
+@media (max-width: 768px) {
+    .animation-element {
+        transform: scale(1.5);
+    }
+    
+    .animation-element:hover {
+        transform: scale(1.7);
+    }
+    
+    .help-button {
+        width: 80px;
+        height: 80px;
+        font-size: 2.5rem;
+    }
+}

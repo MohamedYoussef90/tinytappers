@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kids Keyboard Fun</title>
+    <link rel="stylesheet" href="styles.css">
+    <!-- Add favicon for better appearance on browser tabs -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🎮</text></svg>">
+    <!-- Meta tags for better accessibility -->
+    <meta name="description" content="Interactive keyboard fun for young children ages 1 and up">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Kids Keyboard Fun</h1>
+            <p>Press any key on your keyboard!</p>
+        </div>
+        
+        <!-- Start button to initialize audio -->
+        <div id="start-button-container">
+            <button id="start-button">Click here to Start!</button>
+        </div>
+        
+        <div id="display-area">
+            <div id="key-display"></div>
+            <div id="animation-area"></div>
+        </div>
+        
+        <div class="instructions">
+            <p>For parents: Let your child press keys and watch the magic happen! Touch the screen for mobile devices.</p>
+        </div>
+    </div>
+
+    <!-- Help button for parents -->
+    <div class="help-button" id="help-button" title="Help & Settings">?</div>
+    
+    <!-- Help modal (hidden by default) -->
+    <div id="help-modal" class="help-modal" style="display: none;">
+        <div class="modal-content">
+            <span class="close-button">&times;</span>
+            <h2>Help & Settings</h2>
+            <p>This interactive website is designed for young children (1+ years) to explore keyboard and touch interactions.</p>
+            
+            <h3>How to use:</h3>
+            <ul>
+                <li>Press any key on the keyboard to see animations and hear sounds</li>
+                <li>Touch/click the screen on mobile devices</li>
+                <li>Each letter key shows an animal</li>
+                <li>Each number key shows a number emoji</li>
+            </ul>
+            
+            <h3>Settings:</h3>
+            <div class="settings">
+                <label>
+                    <input type="checkbox" id="high-contrast-toggle"> High Contrast Mode
+                </label>
+                <label>
+                    <input type="checkbox" id="mute-toggle"> Mute Sounds
+                </label>
+            </div>
+        </div>
+    </div>
+
+    <!-- Audio elements -->
+    <audio id="pop-sound" src="sounds/pop.mp3" preload="auto"></audio>
+    <audio id="bounce-sound" src="sounds/bounce.mp3" preload="auto"></audio>
+    <audio id="sparkle-sound" src="sounds/sparkle.mp3" preload="auto"></audio>
+    
+    <!-- Animal sounds will be loaded dynamically -->
+    <div id="animal-sounds"></div>
+    
+    <!-- Number sounds will be loaded dynamically -->
+    <div id="number-sounds"></div>
+    
+    <script src="script.js"></script>
+</body>
+</html>

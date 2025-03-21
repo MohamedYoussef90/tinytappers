@@ -102,12 +102,24 @@ body {
         font-size: 8rem;
     }
 
+    #display-area {
+        height: 75vh;
+        margin: 10px;
+        border-width: 6px;
+    }
+
+    .container {
+        padding: 10px;
+        padding-bottom: 80px;
+    }
+
     /* Help Button and Secure Badge Mobile Styles */
     .help-button {
         top: 15px;
         right: 15px;
         width: 35px;
         height: 35px;
+        z-index: 9999;
     }
 
     .help-button span {
@@ -119,6 +131,7 @@ body {
         left: 15px;
         padding: 3px 8px;
         font-size: 0.7rem;
+        z-index: 9999;
     }
 
     .secure-badge span {
@@ -285,7 +298,7 @@ body {
     justify-content: center;
     cursor: pointer;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    z-index: 100;
+    z-index: 9999;
     transition: transform 0.3s ease;
 }
 
@@ -449,7 +462,7 @@ body {
     gap: 6px;
     font-size: 0.8rem;
     color: #666;
-    z-index: 100;
+    z-index: 9999;
 }
 
 .secure-badge span {
@@ -486,4 +499,10 @@ body {
     background-color: #000;
     color: #fff;
     border: 2px solid #fff;
+}
+
+/* Ensure buttons stay on top in high contrast mode */
+.high-contrast-mode .help-button,
+.high-contrast-mode .secure-badge {
+    z-index: 9999;
 }

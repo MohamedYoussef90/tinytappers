@@ -249,17 +249,21 @@ body {
     background-color: #ff9ff3;
     border-radius: 50%;
     display: flex;
-    justify-content: center;
     align-items: center;
-    font-size: 2rem;
-    color: white;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    justify-content: center;
     cursor: pointer;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     z-index: 100;
+    transition: transform 0.3s ease;
 }
 
 .help-button:hover {
     transform: scale(1.1);
+}
+
+.help-button span {
+    font-size: 2rem;
+    color: white;
 }
 
 /* Help Modal Styles */
@@ -410,9 +414,15 @@ body {
     }
     
     .help-button {
-        width: 80px;
-        height: 80px;
-        font-size: 2.5rem;
+        top: 20px;
+        bottom: auto;
+        right: 20px;
+        width: 40px;
+        height: 40px;
+    }
+
+    .help-button span {
+        font-size: 1.5rem;
     }
 }
 
@@ -420,22 +430,22 @@ body {
 /* Security-related styles */
 .secure-badge {
     position: fixed;
-    bottom: 50px;
+    bottom: 20px;
     left: 20px;
-    background-color: #4CAF50;
-    color: white;
-    padding: 5px 10px;
-    border-radius: 10px;
-    font-size: 0.8rem;
-    z-index: 100;
+    background-color: rgba(255, 255, 255, 0.9);
+    padding: 8px 15px;
+    border-radius: 20px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     display: flex;
     align-items: center;
-    gap: 5px;
+    gap: 8px;
+    font-size: 0.9rem;
+    color: #666;
+    z-index: 100;
 }
 
-.secure-badge img {
-    width: 16px;
-    height: 16px;
+.secure-badge span {
+    font-size: 1.2rem;
 }
 
 /* Footer styling */
@@ -456,4 +466,43 @@ body {
 .footer p {
     margin: 0;
     font-family: 'Comic Sans MS', cursive, sans-serif;
+}
+
+/* High Contrast Mode */
+.high-contrast-mode .help-button {
+    background-color: #000;
+    border: 2px solid #fff;
+}
+
+.high-contrast-mode .secure-badge {
+    background-color: #000;
+    color: #fff;
+    border: 2px solid #fff;
+}
+
+/* Mobile Responsive Adjustments */
+@media (max-width: 768px) {
+    .help-button {
+        top: 20px;
+        bottom: auto;
+        right: 20px;
+        width: 40px;
+        height: 40px;
+    }
+
+    .help-button span {
+        font-size: 1.5rem;
+    }
+
+    .secure-badge {
+        top: 20px;
+        bottom: auto;
+        left: 20px;
+        padding: 4px 10px;
+        font-size: 0.75rem;
+    }
+
+    .secure-badge span {
+        font-size: 0.9rem;
+    }
 }

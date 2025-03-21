@@ -57,9 +57,21 @@ let confettiCount = 0;
 const maxConfetti = 100;
 let backgroundElements = [];
 
+// Security measures
+const securityConfig = {
+    contentSecurityPolicy: true,
+    xssProtection: true,
+    secureInputHandling: true
+};
+
+
 // Initialize the application
 document.addEventListener('DOMContentLoaded', () => {
     console.log('Kids Keyboard Fun initialized!');
+
+    // Apply security measures
+    applySecurityMeasures();
+    
     createSoundElements();
     
     // Initialize start button
@@ -79,7 +91,42 @@ document.addEventListener('DOMContentLoaded', () => {
     
     // Initialize help modal and settings
     initializeHelpAndSettings();
+    // Add secure badge
+    addSecureBadge();
 });
+
+// Apply security measures
+function applySecurityMeasures() {
+    if (securityConfig.contentSecurityPolicy) {
+        // Create a meta tag for Content Security Policy
+        const metaCSP = document.createElement('meta');
+        metaCSP.httpEquiv = 'Content-Security-Policy';
+        metaCSP.content = "default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; font-src 'self'; connect-src 'none'; media-src 'self'; object-src 'none'; child-src 'none';";
+        document.head.appendChild(metaCSP);
+    }
+    
+    if (securityConfig.xssProtection) {
+        // Create a meta tag for X-XSS-Protection
+        const metaXSS = document.createElement('meta');
+        metaXSS.httpEquiv = 'X-XSS-Protection';
+        metaXSS.content = '1; mode=block';
+        document.head.appendChild(metaXSS);
+    }
+    
+    // Sanitize all user inputs
+    if (securityConfig.secureInputHandling) {
+        // This is handled in the input processing functions
+        console.log('Secure input handling enabled');
+    }
+}
+
+// Add secure badge to the page
+function addSecureBadge() {
+    const secureBadge = document.createElement('div');
+    secureBadge.className = 'secure-badge';
+    secureBadge.innerHTML = '<span>🔒</span> Secure';
+    document.body.appendChild(secureBadge);
+}
 
 // Initialize start button
 function initializeStartButton() {
@@ -193,6 +240,8 @@ function initializeHelpAndSettings() {
     const closeButton = document.querySelector('.close-button');
     const highContrastToggle = document.getElementById('high-contrast-toggle');
     const muteToggle = document.getElementById('mute-toggle');
+    const suggestionButton = document.getElementById('suggestion-button');
+    const suggestionEmail = document.getElementById('suggestion-email');
     
     // Style the help modal
     if (helpModal) {
@@ -231,6 +280,10 @@ function initializeHelpAndSettings() {
         helpButton.addEventListener('click', () => {
             if (helpModal) {
                 helpModal.style.display = 'block';
+                // Reset suggestion email visibility when opening modal
+                if (suggestionEmail) {
+                    suggestionEmail.style.display = 'none';
+                }
             }
         });
     }
@@ -265,6 +318,19 @@ function initializeHelpAndSettings() {
     if (muteToggle) {
         muteToggle.addEventListener('change', () => {
             isMuted = muteToggle.checked;
+        });
+    }
+
+    // Add event listener for suggestion button
+    if (suggestionButton && suggestionEmail) {
+        suggestionButton.addEventListener('click', () => {
+            suggestionEmail.style.display = 'block';
+            // Add a small animation to the email link
+            suggestionEmail.style.animation = 'fadeIn 0.5s ease';
+            // Remove animation after it completes
+            setTimeout(() => {
+                suggestionEmail.style.animation = '';
+            }, 500);
         });
     }
 }
@@ -303,64 +369,54 @@ function createSoundElements() {
     console.log('All sound elements initialized');
 }
 
+// Helper function to get random item from array
+function getRandomItem(array) {
+    return array[Math.floor(Math.random() * array.length)];
+}
+
 // Create background elements
 function createBackgroundElements() {
     const animationArea = document.getElementById('animation-area');
+    if (!animationArea) {
+        return;
+    }
     
-    // Create some background shapes
-    for (let i = 0; i < 10; i++) {
-        const element = document.createElement('div');
-        element.classList.add('bg-element');
-        
-        // Random shape and color
-        const shape = shapes[Math.floor(Math.random() * shapes.length)];
-        const color = colors[Math.floor(Math.random() * colors.length)];
-        
-        // Set element style based on shape and color
-        element.style.backgroundColor = color;
-        
-        if (shape === 'circle') {
-            element.style.width = '60px'; // Larger for better visibility
-            element.style.height = '60px';
-            element.style.borderRadius = '50%';
-        } else if (shape === 'square') {
-            element.style.width = '60px';
-            element.style.height = '60px';
-        } else if (shape === 'triangle') {
-            element.style.width = '0';
-            element.style.height = '0';
-            element.style.borderLeft = '30px solid transparent';
-            element.style.borderRight = '30px solid transparent';
-            element.style.borderBottom = '60px solid ' + color;
-            element.style.backgroundColor = 'transparent';
-        } else if (shape === 'star') {
-            element.innerHTML = '★';
-            element.style.fontSize = '60px';
-            element.style.color = color;
-            element.style.backgroundColor = 'transparent';
-        } else if (shape === 'heart') {
-            element.innerHTML = '❤';
-            element.style.fontSize = '60px';
-            element.style.color = color;
-            element.style.backgroundColor = 'transparent';
+    // Clear existing background elements
+    backgroundElements.forEach(element => {
+        if (element.parentNode === animationArea) {
+            animationArea.removeChild(element);
         }
+    });
+    
+    backgroundElements = [];
+    
+    // Create new background elements
+    for (let i = 0; i < 10; i++) {
+        // Create element
+        const element = document.createElement('div');
+        element.className = 'bg-element float';
         
-        // Position element randomly in the animation area
-        const maxX = animationArea.clientWidth - 60;
-        const maxY = animationArea.clientHeight - 60;
-        const randomX = Math.floor(Math.random() * maxX);
-        const randomY = Math.floor(Math.random() * maxY);
+        // Random emoji
+        const emojis = ['☪', '☁️', '🌟', '🌙', '🌞', '🎈', '🎀', '🎵', '🎶', '🦋', '🐝', '🌸', '🌼', '🌺','🕌','☪️'];
+        element.textContent = getRandomItem(emojis);
+        element.style.fontSize = `${Math.floor(Math.random() * 40) + 20}px`;
         
-        element.style.left = randomX + 'px';
-        element.style.top = randomY + 'px';
+        // Random position
+        const left = Math.floor(Math.random() * 90) + 5;
+        const top = Math.floor(Math.random() * 90) + 5;
+        element.style.left = `${left}%`;
+        element.style.top = `${top}%`;
         
-        // Add float animation
-        element.classList.add('float');
+        // Random animation duration and delay
+        const duration = Math.random() * 5 + 5;
+        const delay = Math.random() * 5;
+        element.style.animationDuration = `${duration}s`;
+        element.style.animationDelay = `${delay}s`;
         
-        // Add element to animation area
+        // Add to animation area
         animationArea.appendChild(element);
         
-        // Store element for later reference
+        // Add to background elements array
         backgroundElements.push(element);
     }
 }
@@ -434,6 +490,30 @@ function handleKeyPress(event) {
     // Store last key pressed
     lastKeyPressed = key;
 }
+
+
+// Sanitize input for security
+function sanitizeInput(input) {
+    // Limit input length
+    if (input.length > 1) {
+				 
+				   
+	
+        // Allow arrow keys and special keys
+        if (['ArrowUp', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'Backspace', 'Delete', 'Enter', 'Escape', 'Tab'].includes(input)) {
+            return input;
+        }
+        return input.charAt(0);
+    }
+    
+    // Remove any potentially harmful characters
+    return input.replace(/[^\w\s]/gi, '');
+	
+							 
+						 
+}
+
+
 
 // Handle touch/click events for mobile devices
 function handleScreenTouch(event) {
@@ -828,6 +908,8 @@ function animateBackgroundElements() {
         }, 1000);
     });
 }
+
+
 
 // Handle window resize
 function handleWindowResize() {

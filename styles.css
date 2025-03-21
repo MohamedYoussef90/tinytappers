@@ -13,6 +13,7 @@ body {
     margin: 0 auto;
     padding: 20px;
     text-align: center;
+    padding-bottom: 60px;
 }
 
 .header {
@@ -241,7 +242,7 @@ body {
 /* Child-friendly features */
 .help-button {
     position: fixed;
-    bottom: 20px;
+    bottom: 50px;
     right: 20px;
     width: 60px;
     height: 60px;
@@ -261,6 +262,44 @@ body {
     transform: scale(1.1);
 }
 
+/* Help Modal Styles */
+.help-modal {
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.5);
+    display: none;
+}
+
+.modal-content {
+    background-color: #fff;
+    margin: 10% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    max-width: 600px;
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+.close-button {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.close-button:hover,
+.close-button:focus {
+    color: #000;
+    text-decoration: none;
+}
+
+
 /* Accessibility improvements */
 .high-contrast-mode {
     background-color: #000;
@@ -275,6 +314,89 @@ body {
 .high-contrast-mode #key-display {
     color: #fff;
     text-shadow: none;
+}
+
+/* FIX: Help modal styling for high contrast mode */
+.high-contrast-mode .modal-content {
+    background-color: #000;
+    color: #fff;
+    border-color: #fff;
+}
+
+.high-contrast-mode .close-button {
+    color: #fff;
+}
+
+.high-contrast-mode .close-button:hover,
+.high-contrast-mode .close-button:focus {
+    color: #ddd;
+}
+
+.high-contrast-mode .help-modal h2,
+.high-contrast-mode .help-modal h3,
+.high-contrast-mode .help-modal p,
+.high-contrast-mode .help-modal li {
+    color: #fff;
+}
+
+.high-contrast-mode .settings label {
+    color: #fff;
+}
+
+/* Suggestion section styling */
+.suggestion-section {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.suggestion-button {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 25px;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-family: 'Comic Sans MS', cursive, sans-serif;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.suggestion-button:hover {
+    background-color: #45a049;
+    transform: scale(1.05);
+}
+
+.suggestion-email {
+    display: block;
+    margin-top: 15px;
+    color: #4CAF50;
+    text-decoration: none;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+}
+
+.suggestion-email:hover {
+    color: #45a049;
+    text-decoration: underline;
+}
+
+/* High contrast mode for suggestion section */
+.high-contrast-mode .suggestion-button {
+    background-color: #fff;
+    color: #000;
+}
+
+.high-contrast-mode .suggestion-button:hover {
+    background-color: #ddd;
+}
+
+.high-contrast-mode .suggestion-email {
+    color: #fff;
+}
+
+.high-contrast-mode .suggestion-email:hover {
+    color: #ddd;
 }
 
 /* Larger touch targets for mobile */
@@ -292,4 +414,46 @@ body {
         height: 80px;
         font-size: 2.5rem;
     }
+}
+
+
+/* Security-related styles */
+.secure-badge {
+    position: fixed;
+    bottom: 50px;
+    left: 20px;
+    background-color: #4CAF50;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 10px;
+    font-size: 0.8rem;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.secure-badge img {
+    width: 16px;
+    height: 16px;
+}
+
+/* Footer styling */
+.footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: rgba(255, 255, 255, 0.9);
+    padding: 10px;
+    text-align: center;
+    font-size: 0.9rem;
+    color: #666;
+    box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+    z-index: 100;
+}
+
+.footer p {
+    margin: 0;
+    font-family: 'Comic Sans MS', cursive, sans-serif;
 }

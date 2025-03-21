@@ -3,17 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kids Keyboard Fun</title>
+    <title>TinyTappers - Interactive keyboard Fun for Kids</title>
     <link rel="stylesheet" href="styles.css">
     <!-- Add favicon for better appearance on browser tabs -->
     <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🎮</text></svg>">
-    <!-- Meta tags for better accessibility -->
+     <!-- Meta tags for better accessibility and security -->
     <meta name="description" content="Interactive keyboard fun for young children ages 1 and up">
+    <meta http-equiv="X-XSS-Protection" content="1; mode=block">
 </head>
 <body>
     <div class="container">
         <div class="header">
-            <h1>Kids Keyboard Fun</h1>
+            <h1>TinyTappers</h1>
             <p>Press any key on your keyboard!</p>
         </div>
         
@@ -59,6 +60,13 @@
                     <input type="checkbox" id="mute-toggle"> Mute Sounds
                 </label>
             </div>
+
+            <h3>Suggestions:</h3>
+            <p>Have ideas to make TinyTappers better? Click below to share your suggestions!</p>
+            <div class="suggestion-section">
+                <button id="suggestion-button" class="suggestion-button">Share Your Ideas</button>
+                <a href="mailto:Mohamed-ghazy@outlook.com" id="suggestion-email" class="suggestion-email" style="display: none;">Mohamed-ghazy@outlook.com</a>
+            </div>
         </div>
     </div>
 
@@ -72,6 +80,11 @@
     
     <!-- Number sounds will be loaded dynamically -->
     <div id="number-sounds"></div>
+    
+    <!-- Footer with copyright -->
+    <footer class="footer">
+        <p>&copy; 2025 TinyTappers. All rights reserved. BaDa</p>
+    </footer>
     
     <script src="script.js"></script>
 </body>

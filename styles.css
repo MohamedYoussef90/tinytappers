@@ -101,6 +101,38 @@ body {
     #key-display {
         font-size: 8rem;
     }
+
+    /* Help Button and Secure Badge Mobile Styles */
+    .help-button {
+        top: 15px;
+        right: 15px;
+        width: 35px;
+        height: 35px;
+    }
+
+    .help-button span {
+        font-size: 1.3rem;
+    }
+
+    .secure-badge {
+        top: 15px;
+        left: 15px;
+        padding: 3px 8px;
+        font-size: 0.7rem;
+    }
+
+    .secure-badge span {
+        font-size: 0.9rem;
+    }
+
+    /* Animation Elements */
+    .animation-element {
+        transform: scale(1.5);
+    }
+    
+    .animation-element:hover {
+        transform: scale(1.7);
+    }
 }
 
 /* Animation Classes */
@@ -242,10 +274,10 @@ body {
 /* Child-friendly features */
 .help-button {
     position: fixed;
-    bottom: 50px;
+    top: 20px;
     right: 20px;
-    width: 60px;
-    height: 60px;
+    width: 40px;
+    height: 40px;
     background-color: #ff9ff3;
     border-radius: 50%;
     display: flex;
@@ -262,7 +294,7 @@ body {
 }
 
 .help-button span {
-    font-size: 2rem;
+    font-size: 1.8rem;
     color: white;
 }
 
@@ -403,49 +435,25 @@ body {
     color: #ddd;
 }
 
-/* Larger touch targets for mobile */
-@media (max-width: 768px) {
-    .animation-element {
-        transform: scale(1.5);
-    }
-    
-    .animation-element:hover {
-        transform: scale(1.7);
-    }
-    
-    .help-button {
-        top: 20px;
-        bottom: auto;
-        right: 20px;
-        width: 40px;
-        height: 40px;
-    }
-
-    .help-button span {
-        font-size: 1.5rem;
-    }
-}
-
-
 /* Security-related styles */
 .secure-badge {
     position: fixed;
-    bottom: 20px;
+    top: 20px;
     left: 20px;
     background-color: rgba(255, 255, 255, 0.9);
-    padding: 8px 15px;
-    border-radius: 20px;
+    padding: 4px 10px;
+    border-radius: 15px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     display: flex;
     align-items: center;
-    gap: 8px;
-    font-size: 0.9rem;
+    gap: 6px;
+    font-size: 0.8rem;
     color: #666;
     z-index: 100;
 }
 
 .secure-badge span {
-    font-size: 1.2rem;
+    font-size: 1rem;
 }
 
 /* Footer styling */
@@ -478,31 +486,4 @@ body {
     background-color: #000;
     color: #fff;
     border: 2px solid #fff;
-}
-
-/* Mobile Responsive Adjustments */
-@media (max-width: 768px) {
-    .help-button {
-        top: 20px;
-        bottom: auto;
-        right: 20px;
-        width: 40px;
-        height: 40px;
-    }
-
-    .help-button span {
-        font-size: 1.5rem;
-    }
-
-    .secure-badge {
-        top: 20px;
-        bottom: auto;
-        left: 20px;
-        padding: 4px 10px;
-        font-size: 0.75rem;
-    }
-
-    .secure-badge span {
-        font-size: 0.9rem;
-    }
 }
